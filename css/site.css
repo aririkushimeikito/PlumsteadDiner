@@ -392,6 +392,9 @@ a:hover { color: var(--red-dark); }
 .footer-hours tr.today td { color: #fff; font-weight: 700; }
 .footer-hours .status-chip { margin-bottom: 10px; }
 
+.site-footer .social-links { gap: 14px; margin-top: 6px; }
+.site-footer .social-links svg { width: 32px; height: 32px; }
+
 .footer-bottom { border-top: 1px solid rgba(233, 228, 216, 0.15); font-size: 14px; }
 .footer-bottom .container {
   display: flex; justify-content: space-between; align-items: center; gap: 12px;
