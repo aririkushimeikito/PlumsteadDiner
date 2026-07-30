@@ -1,47 +1,46 @@
 # Plumstead Diner — Website
 
-Multi-page static restaurant website for **Plumstead Diner**, adapted from the
-DigitalOneWeb restaurant template (`scratchkitchenbygallosv2`).
+Multi-page static website for **Plumstead Diner**, a locally owned breakfast &
+lunch diner at 5978 Easton Road, Pipersville, PA 18947.
 
 ## Live site
-
-Once GitHub Pages is enabled, the site is served at:
 
 **https://aririkushimeikito.github.io/PlumsteadDiner/**
 
 Deployment is automated by `.github/workflows/deploy-pages.yml` — every push to
-`main` or `claude/site-design-repo-setup-9w4hsg` redeploys the site.
+`main` or `claude/site-design-repo-setup-9w4hsg` redeploys via GitHub Pages.
+(Pages must be enabled once in Settings → Pages → Source: GitHub Actions.)
 
 ## Pages
 
-| Page | File |
-|---|---|
-| Home | `index.html` |
-| Menu | `menu.html` |
-| Drinks | `drinks.html` |
-| Online ordering (demo) | `order.html` |
-| Reservations | `reserve.html` |
-| Private events | `private-events.html` |
-| Catering | `catering.html` |
-| Gift cards | `gift-cards.html` |
-| Rewards | `rewards.html` |
-| Gallery | `gallery.html` |
-| About | `about.html` |
-| Visit / hours & location | `visit.html` |
-| Careers | `careers.html` |
+| Page | File | Notes |
+|---|---|---|
+| Home | `index.html` | Hero, favorites, hours, FAQs |
+| Menu | `menu.html` | Full menu typed from the print menu + skillet insert |
+| Drinks & Desserts | `drinks.html` | Espresso bar, shakes, smoothies (from half-page insert) |
+| About Us | `about.html` | Owner-provided About verbiage + family welcome |
+| Visit Us | `contact.html` | Address, hours, Google Map, socials |
 
-## Placeholder content to replace
+## Features
 
-The site currently carries **template content** that still needs real
-Plumstead Diner information:
+- **Open/Closed indicator** — live status chip (header, footer, Visit page)
+  computed in Eastern Time from the daily 7:00 AM – 3:00 PM schedule (`js/site.js`).
+- **Instant scroll-to-top** — clicking the logo jumps straight to the top
+  (no slow smooth-scroll crawl).
+- **SEO** — unique title/meta description per page, keyword-focused H1/H2s,
+  Restaurant + Menu + FAQPage JSON-LD structured data, Open Graph tags,
+  `sitemap.xml`, `robots.txt`, canonical URLs.
+- **Real brand assets** — the logo was extracted from the print menu PDF
+  (`img/plumstead-logo.png`).
 
-- **Logos** (`brand/logo-scratch.png`, `assets/business-logo.png`, `icon.png`,
-  `apple-icon.png`) are generated text placeholders — swap in the real logo
-  files (keep the same filenames so nothing breaks).
-- **Menu items and prices** (in the HTML pages and `order-system.js`) are from
-  the template.
-- **Address, phone, hours, and map links** are from the template restaurant.
-- **Online ordering / reservation buttons** still point to the template
-  restaurant's Toast account (`order.toasttab.com/...`, `tables.toasttab.com/...`)
-  — replace these URLs with the diner's own ordering/reservation links.
-- **Photos** in `img/` and `uploads/` are template photography.
+## Placeholder food images
+
+`img/food/*.svg` are temporary flat-style illustrations generated from the menu
+descriptions. When real photography arrives, replace these files (keep the
+same filenames) or swap the `<img>` tags.
+
+## When the site moves to plumsteaddiner.com
+
+Search-and-replace `https://aririkushimeikito.github.io/PlumsteadDiner/` with
+the production URL in every HTML file (canonical/OG/JSON-LD), `sitemap.xml`
+and `robots.txt`.

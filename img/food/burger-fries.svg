@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-label="Illustration of a half-pound burger with fries">
+  <circle cx="200" cy="160" r="150" fill="#f3ead8"/>
+  <ellipse cx="200" cy="284" rx="130" ry="13" fill="#22304b" opacity="0.10"/>
+  <!-- fries cup -->
+  <g transform="translate(268 128)">
+    <g stroke-linecap="round">
+      <rect x="6" y="-24" width="13" height="80" rx="6" fill="#f2c14e" transform="rotate(-9 12 16)"/>
+      <rect x="24" y="-34" width="13" height="90" rx="6" fill="#eab84a"/>
+      <rect x="42" y="-26" width="13" height="82" rx="6" fill="#f2c14e" transform="rotate(8 48 15)"/>
+      <rect x="16" y="-14" width="13" height="70" rx="6" fill="#f6cf68" transform="rotate(-4 22 21)"/>
+      <rect x="34" y="-16" width="13" height="72" rx="6" fill="#f6cf68" transform="rotate(4 40 20)"/>
+    </g>
+    <path d="M-4 34 h70 l-8 74 q-1 10 -12 10 h-30 q-11 0 -12 -10 z" fill="#a32c2e"/>
+    <path d="M-4 34 h70 l-2 18 h-66z" fill="#872224"/>
+    <rect x="8" y="66" width="46" height="26" rx="4" fill="#fdfcf8"/>
+  </g>
+  <!-- burger -->
+  <g transform="translate(58 96)">
+    <path d="M12 60 q0 -52 78 -52 q78 0 78 52 l0 6 h-156z" fill="#e0a75e"/>
+    <ellipse cx="52" cy="30" rx="5" ry="3.4" fill="#f6e2bd"/>
+    <ellipse cx="88" cy="18" rx="5" ry="3.4" fill="#f6e2bd"/>
+    <ellipse cx="124" cy="30" rx="5" ry="3.4" fill="#f6e2bd"/>
+    <ellipse cx="70" cy="42" rx="5" ry="3.4" fill="#f6e2bd"/>
+    <ellipse cx="108" cy="44" rx="5" ry="3.4" fill="#f6e2bd"/>
+    <!-- lettuce -->
+    <path d="M6 66 q12 16 24 0 q12 16 24 0 q12 16 24 0 q12 16 24 0 q12 16 24 0 q12 16 24 0 q12 16 24 0 l0 14 h-168z" fill="#6ca154"/>
+    <!-- cheese -->
+    <path d="M14 80 h152 l-14 20 -22 -12 -20 12 -20 -12 -20 12 -20 -12 -22 12z" fill="#f2b632"/>
+    <!-- patty -->
+    <rect x="10" y="84" width="160" height="26" rx="13" fill="#7a4326"/>
+    <rect x="10" y="84" width="160" height="13" rx="6" fill="#8f532f"/>
+    <!-- tomato -->
+    <rect x="18" y="108" width="144" height="14" rx="7" fill="#d24d3e"/>
+    <!-- bottom bun -->
+    <path d="M14 122 h152 q6 0 6 8 q0 18 -24 18 h-116 q-24 0 -24 -18 q0 -8 6 -8z" fill="#d99c53"/>
+  </g>
+</svg>

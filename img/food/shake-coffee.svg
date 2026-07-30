@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-label="Illustration of a classic milkshake and diner coffee">
+  <circle cx="200" cy="160" r="150" fill="#f3ead8"/>
+  <ellipse cx="200" cy="284" rx="120" ry="13" fill="#22304b" opacity="0.10"/>
+  <!-- milkshake -->
+  <g transform="translate(96 30)">
+    <path d="M8 78 h96 l-14 156 q-1 12 -13 12 h-42 q-12 0 -13 -12z" fill="#dfeef4"/>
+    <path d="M8 78 h96 l-3 30 q-45 14 -90 0z" fill="#f6d7d9"/>
+    <path d="M14 70 q-12 -26 14 -34 q4 -18 26 -16 q22 -18 40 0 q24 -2 26 20 q16 10 4 30z" fill="#fdfcf8"/>
+    <circle cx="58" cy="18" r="11" fill="#a32c2e"/>
+    <rect x="66" y="-24" width="9" height="76" rx="4.5" fill="#a32c2e" transform="rotate(9 70 14)"/>
+    <rect x="24" y="118" width="64" height="34" rx="8" fill="#fdfcf8" opacity="0.65"/>
+  </g>
+  <!-- coffee -->
+  <g transform="translate(226 138)">
+    <path d="M0 22 h104 q0 66 -52 66 q-52 0 -52 -66z" fill="#fdfcf8" stroke="#e4ddcc" stroke-width="3"/>
+    <path d="M104 30 q28 4 24 26 q-4 24 -32 20 q8 -10 8 -46z" fill="none" stroke="#e4ddcc" stroke-width="8"/>
+    <ellipse cx="52" cy="22" rx="52" ry="12" fill="#fdfcf8" stroke="#e4ddcc" stroke-width="3"/>
+    <ellipse cx="52" cy="22" rx="40" ry="8" fill="#6b4226"/>
+    <ellipse cx="52" cy="22" rx="26" ry="5" fill="#7d4e2d"/>
+    <path d="M52 108 h0" stroke="none"/>
+    <g stroke="#b9b2a3" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.7">
+      <path d="M30 -4 q-8 -14 2 -26"/>
+      <path d="M62 -8 q-8 -14 2 -26"/>
+    </g>
+    <rect x="14" y="96" width="76" height="10" rx="5" fill="#a32c2e"/>
+  </g>
+</svg>
