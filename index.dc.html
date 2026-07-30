@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #faf8f4; color: #16130f; font-family: 'Jost', sans-serif; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; color: inherit; }
+  @keyframes scrollHint { 0% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(8px); opacity: .35; } 100% { transform: translateY(0); opacity: 1; } }
+  .reveal { opacity: 1; transform: none; }
+  .navlink { position: relative; }
+  .navlink::after { content: ''; position: absolute; left: 0; bottom: -5px; height: 1px; width: 0; background: #f7d289; transition: width .4s cubic-bezier(.22,1,.36,1); }
+  .navlink:hover::after { width: 100%; }
+  .mcard { transition: transform .55s cubic-bezier(.22,1,.36,1), box-shadow .55s cubic-bezier(.22,1,.36,1), border-color .55s ease; }
+  .mcard:hover { transform: translateY(-8px); box-shadow: 0 26px 60px -28px rgba(20,16,8,.45); border-color: rgba(247,210,137,.7); }
+  .ecard { transition: transform .55s cubic-bezier(.22,1,.36,1), background .55s ease; }
+  .ecard:hover { transform: translateY(-6px); background: #fffdf9; }
+  .gbtn { transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, background .4s ease, color .4s ease; }
+  .gbtn:hover { transform: translateY(-3px); }
+  .glow:hover { box-shadow: 0 18px 40px -16px rgba(247,210,137,.7); }
+  .soc { transition: transform .4s cubic-bezier(.22,1,.36,1), border-color .4s ease, color .4s ease; }
+  .soc:hover { transform: translateY(-4px); border-color: #f7d289; color: #f7d289; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "The Plumstead Diner",
+  "image": "assets/business-logo.png",
+  "description": "Scratch-made flavor crafted fresh every day. Handcrafted sandwiches, fresh salads, smash burgers, raw bar and seafood entrées in Horsham, PA.",
+  "servesCuisine": ["American", "Seafood", "Sandwiches"],
+  "priceRange": "$$",
+  "menu": "assets/scratch.pdf",
+  "telephone": "+1-267-445-2200",
+  "url": "https://order.toasttab.com/online/scratchkitchengallos",
+  "acceptsReservations": "False",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "575 Horsham Rd",
+    "addressLocality": "Horsham",
+    "addressRegion": "PA",
+    "postalCode": "19044",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "11:00",
+    "closes": "20:00"
+  }],
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61588627988126",
+    "https://www.instagram.com/thescratchkitchengallos"
+  ]
+}
+</script>
+</helmet>
+
+<div style="overflow-x: hidden;">
+
+  <!-- ===== NAV ===== -->
+  <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: background .5s ease, box-shadow .5s ease, padding .5s ease; background: {{ navBg }}; box-shadow: {{ navShadow }}; padding: {{ navPad }};">
+    <nav style="max-width: 1240px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.dc.html" aria-label="The Plumstead Diner home" style="display: flex; align-items: center;">
+        <img src="assets/business-logo.png" alt="The Plumstead Diner" style="height: 46px; width: auto; border-radius: 4px; display: block;">
+      </a>
+      <div style="display: flex; align-items: center; gap: 38px;">
+        <a class="navlink" href="index.dc.html" style="font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400; color: #faf6ee;">Home</a>
+        <a class="navlink" href="contact.dc.html" style="font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400; color: #faf6ee;">Contact</a>
+        <a class="navlink" href="assets/scratch.pdf" target="_blank" rel="noopener" style="font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400; color: #faf6ee;">Menu</a>
+        <a class="gbtn glow" href="https://order.toasttab.com/online/scratchkitchengallos" target="_blank" rel="noopener" style="background: #f7d289; color: #16130f; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; padding: 13px 26px; border-radius: 2px;">Order Online</a>
+      </div>
+      <button onClick="{{ toggleMenu }}" aria-label="Open menu" style="display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 6px;" data-mobile-toggle>
+        <span style="width: 26px; height: 2px; background: #faf6ee; display: block;"></span>
+        <span style="width: 26px; height: 2px; background: #faf6ee; display: block;"></span>
+        <span style="width: 26px; height: 2px; background: #faf6ee; display: block;"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- mobile drawer -->
+  <div onClick="{{ closeMenu }}" style="position: fixed; inset: 0; z-index: 110; background: rgba(8,7,5,.55); backdrop-filter: blur(4px); opacity: {{ drawerOverlayOpacity }}; pointer-events: {{ drawerPointer }}; transition: opacity .45s ease;"></div>
+  <aside style="position: fixed; top: 0; right: 0; bottom: 0; z-index: 120; width: min(82vw, 360px); background: #0c0b09; padding: 30px 32px; transform: {{ drawerTransform }}; transition: transform .5s cubic-bezier(.22,1,.36,1); display: flex; flex-direction: column;">
+    <div style="display: flex; justify-content: flex-end;">
+      <button onClick="{{ closeMenu }}" aria-label="Close menu" style="background: none; border: none; color: #faf6ee; font-size: 30px; line-height: 1; cursor: pointer; font-family: 'Jost', sans-serif;">&times;</button>
+    </div>
+    <nav style="display: flex; flex-direction: column; gap: 8px; margin-top: 30px;">
+      <a onClick="{{ closeMenu }}" href="index.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #faf6ee; padding: 10px 0; border-bottom: 1px solid rgba(247,210,137,.16);">Home</a>
+      <a onClick="{{ closeMenu }}" href="contact.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #faf6ee; padding: 10px 0; border-bottom: 1px solid rgba(247,210,137,.16);">Contact</a>
+      <a href="assets/scratch.pdf" target="_blank" rel="noopener" style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #faf6ee; padding: 10px 0; border-bottom: 1px solid rgba(247,210,137,.16);">Menu</a>
+    </nav>
+    <a href="https://order.toasttab.com/online/scratchkitchengallos" target="_blank" rel="noopener" style="margin-top: 28px; text-align: center; background: #f7d289; color: #16130f; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; padding: 16px; border-radius: 2px;">Order Online</a>
+    <div style="margin-top: auto; font-size: 13px; color: #7c766b; letter-spacing: .04em; line-height: 1.6;">575 Horsham Rd · Horsham, PA<br>(267) 445-2200</div>
+  </aside>
+
+  <!-- ===== HERO ===== -->
+  <section style="position: relative; min-height: 100vh; display: flex; align-items: center; background: radial-gradient(120% 120% at 70% 20%, #1c1812 0%, #0c0b09 60%, #060503 100%); overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(247,210,137,.05) 0px, rgba(247,210,137,.05) 1px, transparent 1px, transparent 26px); opacity: .6;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6,5,3,.82) 0%, rgba(6,5,3,.5) 55%, rgba(6,5,3,.2) 100%);"></div>
+    <div style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .2em; color: rgba(247,210,137,.35); writing-mode: vertical-rl; text-transform: uppercase;">[ plated dish · hero image ]</div>
+    <div style="position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; padding: 130px 28px 90px; width: 100%;">
+      <div style="max-width: 760px;">
+        <div class="reveal" data-reveal style="display: flex; align-items: center; gap: 14px; margin-bottom: 26px;">
+          <span style="width: 46px; height: 1px; background: #f7d289;"></span>
+          <span style="font-size: 13px; letter-spacing: .32em; text-transform: uppercase; color: #f7d289;">Horsham, Pennsylvania</span>
+        </div>
+        <h1 class="reveal" data-reveal style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(46px, 7vw, 92px); line-height: 1.02; color: #faf6ee; margin: 0; letter-spacing: -.01em;">Scratch-Made Flavor.<br><span style="font-style: italic; color: #f7d289;">Crafted Fresh</span> Every Day.</h1>
+        <p class="reveal" data-reveal style="margin: 30px 0 0; max-width: 560px; font-size: 18px; line-height: 1.7; color: rgba(250,246,238,.82); font-weight: 300;">From handcrafted sandwiches and fresh salads to comfort food favorites, every dish at The Plumstead Diner is made with quality ingredients and care.</p>
+        <div class="reveal" data-reveal style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 42px;">
+          <a class="gbtn glow" href="https://order.toasttab.com/online/scratchkitchengallos" target="_blank" rel="noopener" style="background: #f7d289; color: #16130f; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; padding: 18px 38px; border-radius: 2px;">Order Online</a>
+          <a class="gbtn" href="#menu" style="border: 1px solid rgba(250,246,238,.4); color: #faf6ee; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; font-weight: 400; padding: 18px 38px; border-radius: 2px;">View Menu</a>
+        </div>
+      </div>
+    </div>
+    <a href="#welcome" style="position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 10px; color: rgba(250,246,238,.6);">
+      <span style="font-size: 11px; letter-spacing: .26em; text-transform: uppercase;">Scroll</span>
+      <span style="width: 1px; height: 40px; background: linear-gradient(rgba(247,210,137,.8), transparent); animation: scrollHint 2.4s ease-in-out infinite;"></span>
+    </a>
+  </section>
+
+  <!-- ===== WELCOME ===== -->
+  <section id="welcome" style="padding: clamp(80px, 12vw, 150px) 28px; background: #faf8f4;">
+    <div style="max-width: 920px; margin: 0 auto; text-align: center;">
+      <div class="reveal" data-reveal style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 28px;">
+        <span style="width: 30px; height: 1px; background: #c9a24b;"></span>
+        <span style="font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: #b08a3a;">Our Kitchen</span>
+        <span style="width: 30px; height: 1px; background: #c9a24b;"></span>
+      </div>
+      <h2 class="reveal" data-reveal style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(36px, 5vw, 62px); line-height: 1.08; margin: 0; color: #16130f;">Welcome to The Plumstead Diner</h2>
+      <p class="reveal" data-reveal style="margin: 32px auto 0; max-width: 720px; font-size: 18px; line-height: 1.85; color: #4a443c; font-weight: 300;">At The Plumstead Diner, great food starts with great ingredients. We believe every meal should be made fresh, served with care, and enjoyed in a welcoming atmosphere. Whether you're stopping by for lunch, dinner, or takeout, our kitchen is dedicated to delivering quality you can taste in every bite.</p>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED EXPERIENCE ===== -->
+  <section style="padding: 0 28px clamp(80px, 12vw, 140px); background: #faf8f4;">
+    <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px;">
+      <div class="reveal ecard" data-reveal style="background: #fff; border: 1px solid #ece5d8; border-radius: 4px; padding: 48px 40px;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #f7d289; -webkit-text-stroke: .5px #c9a24b; margin-bottom: 22px;">01</div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; margin: 0 0 14px; color: #16130f;">Fresh Ingredients</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #58524a; font-weight: 300;">We source quality ingredients and prepare every dish with attention to detail.</p>
+      </div>
+      <div class="reveal ecard" data-reveal style="background: #fff; border: 1px solid #ece5d8; border-radius: 4px; padding: 48px 40px; transition-delay: .08s;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #f7d289; -webkit-text-stroke: .5px #c9a24b; margin-bottom: 22px;">02</div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; margin: 0 0 14px; color: #16130f;">Made From Scratch</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #58524a; font-weight: 300;">Our recipes are crafted to deliver comforting flavors and memorable meals.</p>
+      </div>
+      <div class="reveal ecard" data-reveal style="background: #fff; border: 1px solid #ece5d8; border-radius: 4px; padding: 48px 40px; transition-delay: .16s;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #f7d289; -webkit-text-stroke: .5px #c9a24b; margin-bottom: 22px;">03</div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; margin: 0 0 14px; color: #16130f;">Fast &amp; Friendly Service</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #58524a; font-weight: 300;">Whether dining in or ordering online, we make every experience convenient and enjoyable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU HIGHLIGHTS ===== -->
+  <section id="menu" style="padding: clamp(80px, 12vw, 150px) 28px; background: #0c0b09; position: relative;">
+    <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(247,210,137,.04) 0px, rgba(247,210,137,.04) 1px, transparent 1px, transparent 30px);"></div>
+    <div style="max-width: 1180px; margin: 0 auto; position: relative;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 28px; margin-bottom: 56px;">
+        <div>
+          <div class="reveal" data-reveal style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 30px; height: 1px; background: #f7d289;"></span>
+            <span style="font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: #f7d289;">From the Kitchen</span>
+          </div>
+          <h2 class="reveal" data-reveal style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(36px, 5vw, 60px); line-height: 1.05; margin: 0; color: #faf6ee;">A Taste of the Menu</h2>
+        </div>
+        <a class="reveal gbtn" data-reveal href="assets/scratch.pdf" target="_blank" rel="noopener" style="border: 1px solid rgba(247,210,137,.5); color: #f7d289; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400; padding: 16px 30px; border-radius: 2px; white-space: nowrap;">Download Full Menu</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px;">
+        <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="6">
+          <div class="reveal mcard" data-reveal style="background: rgba(250,246,238,.03); border: 1px solid rgba(247,210,137,.18); border-radius: 4px; padding: 38px 34px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 22px;">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 28px; margin: 0; color: #faf6ee;">{{ cat.name }}</h3>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(247,210,137,.6); letter-spacing: .1em;">{{ cat.tag }}</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <sc-for list="{{ cat.items }}" as="item" hint-placeholder-count="3">
+                <div style="display: flex; align-items: baseline; gap: 12px;">
+                  <span style="font-size: 15px; color: rgba(250,246,238,.86); font-weight: 300;">{{ item.name }}</span>
+                  <span style="flex: 1; border-bottom: 1px dotted rgba(247,210,137,.3); transform: translateY(-4px);"></span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f7d289;">{{ item.price }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <p class="reveal" data-reveal style="text-align: center; margin: 48px 0 0; font-size: 14px; color: rgba(250,246,238,.45); font-weight: 300; letter-spacing: .04em;">This is our intro menu &mdash; more to come. (GF) gluten-free options available upon request.</p>
+    </div>
+  </section>
+
+  <!-- ===== ORDERING CTA ===== -->
+  <section style="padding: clamp(80px, 12vw, 140px) 28px; background: #f7d289; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(22,19,15,.04) 0px, rgba(22,19,15,.04) 1px, transparent 1px, transparent 24px);"></div>
+    <div style="max-width: 800px; margin: 0 auto; text-align: center; position: relative;">
+      <span class="reveal" data-reveal style="display: inline-block; font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: #5c4a1d; margin-bottom: 22px;">Online Ordering</span>
+      <h2 class="reveal" data-reveal style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(38px, 5.5vw, 66px); line-height: 1.05; margin: 0; color: #16130f;">Enjoy Your Favorites Anywhere</h2>
+      <p class="reveal" data-reveal style="margin: 26px auto 0; max-width: 560px; font-size: 18px; line-height: 1.7; color: #4a3d1c; font-weight: 400;">Skip the wait and order directly online for quick pickup or convenient takeout.</p>
+      <a class="reveal gbtn" data-reveal href="https://order.toasttab.com/online/scratchkitchengallos" target="_blank" rel="noopener" style="display: inline-block; margin-top: 40px; background: #16130f; color: #f7d289; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; padding: 19px 46px; border-radius: 2px;">Order Online</a>
+    </div>
+  </section>
+
+  <!-- ===== HOURS & LOCATION ===== -->
+  <section style="padding: clamp(80px, 12vw, 150px) 28px; background: #faf8f4;">
+    <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: center;">
+      <div class="reveal" data-reveal>
+        <div style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+          <span style="width: 30px; height: 1px; background: #c9a24b;"></span>
+          <span style="font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: #b08a3a;">Find Us</span>
+        </div>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px, 4.5vw, 54px); line-height: 1.06; margin: 0 0 30px; color: #16130f;">Visit Us</h2>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 26px;">
+          <span style="display: inline-flex; align-items: center; gap: 10px; padding: 9px 18px; border-radius: 100px; background: {{ statusBg }}; color: {{ statusColor }}; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ statusColor }}; box-shadow: 0 0 0 4px {{ statusGlow }};"></span>{{ statusText }}
+          </span>
+        </div>
+        <div style="border-top: 1px solid #e6dfd1;">
+          <div style="display: flex; justify-content: space-between; gap: 20px; padding: 20px 0; border-bottom: 1px solid #e6dfd1;">
+            <span style="font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #9a9285;">Address</span>
+            <span style="text-align: right; font-size: 17px; color: #2c2820; font-weight: 300;">575 Horsham Rd<br>Horsham, PA 19044</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; gap: 20px; padding: 20px 0; border-bottom: 1px solid #e6dfd1;">
+            <span style="font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #9a9285;">Phone</span>
+            <a href="tel:+12674452200" style="font-size: 17px; color: #2c2820; font-weight: 300;">(267) 445-2200</a>
+          </div>
+          <div style="display: flex; justify-content: space-between; gap: 20px; padding: 20px 0; border-bottom: 1px solid #e6dfd1;">
+            <span style="font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #9a9285;">Hours</span>
+            <span style="text-align: right; font-size: 17px; color: #2c2820; font-weight: 300;">Monday &ndash; Sunday<br>11:00 AM &ndash; 8:00 PM</span>
+          </div>
+        </div>
+        <a class="gbtn" href="https://order.toasttab.com/online/scratchkitchengallos" target="_blank" rel="noopener" style="display: inline-block; margin-top: 34px; background: #16130f; color: #f7d289; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; padding: 16px 34px; border-radius: 2px;">Order Online</a>
+      </div>
+      <div class="reveal" data-reveal style="border-radius: 4px; overflow: hidden; border: 1px solid #e6dfd1; box-shadow: 0 30px 70px -40px rgba(20,16,8,.5); height: 460px;">
+        <iframe title="Map to The Plumstead Diner" src="https://www.google.com/maps?q=575+Horsham+Rd,+Horsham,+PA+19044&output=embed" width="100%" height="100%" style="border: 0; display: block; filter: grayscale(.25) contrast(1.05);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background: #0c0b09; color: #faf6ee; padding: clamp(64px, 9vw, 100px) 28px 40px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px;">
+      <div>
+        <img src="assets/business-logo.png" alt="The Plumstead Diner" style="height: 64px; width: auto; border-radius: 4px; margin-bottom: 24px;">
+        <p style="margin: 0; max-width: 320px; font-size: 15px; line-height: 1.75; color: rgba(250,246,238,.6); font-weight: 300;">Fresh ingredients, scratch-made recipes, and exceptional service in Horsham, Pennsylvania.</p>
+        <div style="display: flex; gap: 12px; margin-top: 28px;">
+          <a class="soc" href="https://www.facebook.com/profile.php?id=61588627988126" target="_blank" rel="noopener" aria-label="Facebook" style="width: 44px; height: 44px; border: 1px solid rgba(247,210,137,.3); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: rgba(250,246,238,.85); font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600;">f</a>
+          <a class="soc" href="https://www.instagram.com/thescratchkitchengallos" target="_blank" rel="noopener" aria-label="Instagram" style="width: 44px; height: 44px; border: 1px solid rgba(247,210,137,.3); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: rgba(250,246,238,.85);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a class="soc" href="https://maps.app.goo.gl/wtckBAS9QoU9Bpjp6" target="_blank" rel="noopener" aria-label="Google Maps" style="width: 44px; height: 44px; border: 1px solid rgba(247,210,137,.3); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: rgba(250,246,238,.85);">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #f7d289; margin: 0 0 22px; font-weight: 500;">Quick Links</h4>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <a class="navlink" href="index.dc.html" style="font-size: 15px; color: rgba(250,246,238,.7); font-weight: 300; width: fit-content;">Home</a>
+          <a class="navlink" href="contact.dc.html" style="font-size: 15px; color: rgba(250,246,238,.7); font-weight: 300; width: fit-content;">Contact</a>
+          <a class="navlink" href="assets/scratch.pdf" target="_blank" rel="noopener" style="font-size: 15px; color: rgba(250,246,238,.7); font-weight: 300; width: fit-content;">Menu</a>
+          <a class="navlink" href="https://order.toasttab.com/online/scratchkitchengallos" target="_blank" rel="noopener" style="font-size: 15px; color: rgba(250,246,238,.7); font-weight: 300; width: fit-content;">Order Online</a>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #f7d289; margin: 0 0 22px; font-weight: 500;">Contact</h4>
+        <div style="display: flex; flex-direction: column; gap: 16px; font-size: 15px; color: rgba(250,246,238,.7); font-weight: 300; line-height: 1.6;">
+          <span>575 Horsham Rd<br>Horsham, PA 19044</span>
+          <a href="tel:+12674452200">(267) 445-2200</a>
+          <span>Mon &ndash; Sun · 11AM &ndash; 8PM</span>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1180px; margin: 60px auto 0; padding-top: 28px; border-top: 1px solid rgba(247,210,137,.14); display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center;">
+      <span style="font-size: 13px; color: rgba(250,246,238,.4); font-weight: 300;">&copy; 2026 The Plumstead Diner. All Rights Reserved.</span>
+      <span style="font-size: 13px; color: rgba(250,246,238,.4); font-weight: 300; letter-spacing: .1em;">Horsham, PA</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mobileOpen: false, scrolled: false, now: new Date() };
+
+  componentDidMount() {
+    // sticky nav style on scroll
+    this._onScroll = () => {
+      const s = window.scrollY > 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+
+    // live open/closed clock
+    this._clock = setInterval(() => this.setState({ now: new Date() }), 30000);
+
+    // responsive mobile toggle visibility + scroll reveal
+    this._applyResponsive();
+    this._onResize = () => this._applyResponsive();
+    window.addEventListener('resize', this._onResize);
+
+    this._revealEls = [];
+    requestAnimationFrame(() => this._initReveal());
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('scroll', this._revealScroll);
+    clearInterval(this._clock);
+    clearTimeout(this._revealSafety);
+  }
+
+  _applyResponsive() {
+    const root = this._root();
+    if (!root) return;
+    const mobile = window.innerWidth <= 880;
+    const toggle = root.querySelector('[data-mobile-toggle]');
+    if (toggle) toggle.style.display = mobile ? 'flex' : 'none';
+    const desktopLinks = toggle ? toggle.previousElementSibling : null;
+    if (desktopLinks) desktopLinks.style.display = mobile ? 'none' : 'flex';
+  }
+
+  _root() {
+    return document.querySelector('header') ? document : null;
+  }
+
+  _initReveal() {
+    this._revealEls = Array.from(document.querySelectorAll('[data-reveal]:not(.is-visible)'));
+    this._revealScroll = () => this._checkReveal();
+    window.addEventListener('scroll', this._revealScroll, { passive: true });
+    this._checkReveal();
+    // safety: never leave content hidden if scroll math/visibility is off
+    this._revealSafety = setTimeout(() => {
+      this._revealEls.forEach(e => e.classList.add('is-visible'));
+      this._revealEls = [];
+    }, 1400);
+  }
+
+  _checkReveal() {
+    if (!this._revealEls || !this._revealEls.length) return;
+    const h = window.innerHeight || document.documentElement.clientHeight;
+    const trigger = h * 0.9;
+    const remaining = [];
+    this._revealEls.forEach(e => {
+      const top = e.getBoundingClientRect().top;
+      if (top < trigger) this._reveal(e);
+      else remaining.push(e);
+    });
+    this._revealEls = remaining;
+  }
+
+  _reveal(e) {
+    e.classList.add('is-visible');
+  }
+
+  _isOpen() {
+    const n = this.state.now;
+    const mins = n.getHours() * 60 + n.getMinutes();
+    return mins >= 11 * 60 && mins < 20 * 60; // 11:00 - 20:00 daily
+  }
+
+  toggleMenu = () => this.setState(s => ({ mobileOpen: !s.mobileOpen }));
+  closeMenu = () => this.setState({ mobileOpen: false });
+
+  renderVals() {
+    const open = this._isOpen();
+    const scrolled = this.state.scrolled;
+    const mo = this.state.mobileOpen;
+    return {
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      navBg: scrolled ? 'rgba(10,9,7,0.92)' : 'transparent',
+      navShadow: scrolled ? '0 1px 0 rgba(247,210,137,0.14), 0 14px 40px -24px rgba(0,0,0,0.6)' : 'none',
+      navPad: scrolled ? '12px 0' : '22px 0',
+      drawerTransform: mo ? 'translateX(0)' : 'translateX(105%)',
+      drawerOverlayOpacity: mo ? 1 : 0,
+      drawerPointer: mo ? 'auto' : 'none',
+      statusText: open ? 'Open Now' : 'Closed Now',
+      statusColor: open ? '#1f8a4d' : '#b23b3b',
+      statusBg: open ? 'rgba(31,138,77,0.1)' : 'rgba(178,59,59,0.09)',
+      statusGlow: open ? 'rgba(31,138,77,0.18)' : 'rgba(178,59,59,0.16)',
+      categories: [
+        { name: 'Raw Bar', tag: 'GF', items: [
+          { name: 'Oysters · served raw', price: '$17' },
+          { name: 'Shrimp Cocktail', price: '$17' },
+          { name: 'The Coastal Reserve Tower', price: 'MP' },
+        ]},
+        { name: 'Soups & Starters', tag: 'SHARE', items: [
+          { name: 'Seafood Bisque', price: '$9' },
+          { name: 'Crispy Calamari', price: '$14' },
+          { name: 'Steamed Clams', price: '$14' },
+        ]},
+        { name: 'Salads', tag: 'FRESH', items: [
+          { name: 'Seafood Salad', price: '$30' },
+          { name: 'Burrata Salad', price: '$17' },
+          { name: 'Caesar Salad', price: '$13' },
+        ]},
+        { name: 'Smash Burgers', tag: 'W/ FRIES', items: [
+          { name: 'Plumstead Diner Burger', price: '$16' },
+          { name: 'Bacon Jam Burger', price: '$18' },
+          { name: 'French Onion Burger', price: '$18' },
+        ]},
+        { name: 'Sandwiches', tag: 'W/ FRIES', items: [
+          { name: 'Crab Cake Sandwich', price: '$22' },
+          { name: 'Italian Roast Pork', price: '$18' },
+          { name: 'Ribeye Cheesesteak', price: '$20' },
+        ]},
+        { name: 'Entrées', tag: 'PLATES', items: [
+          { name: 'Pan Seared Filet Mignon', price: '$35' },
+          { name: 'Tuscan Salmon', price: '$28' },
+          { name: 'Lump Crab Cakes', price: '$35' },
+        ]},
+      ],
+    };
+  }
+}
+</script>
+<script id="open-status-js">(function(){var H={0:[[11,20]],1:[[11,20]],2:[[11,20]],3:[[11,20]],4:[[11,20]],5:[[11,20]],6:[[11,20]]};function nowNY(){try{var p=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());var o={};p.forEach(function(x){o[x.type]=x.value;});var D={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};var h=parseInt(o.hour,10);if(h>=24)h-=24;return{d:D[o.weekday],t:h+parseInt(o.minute,10)/60};}catch(e){var n=new Date();return{d:n.getDay(),t:n.getHours()+n.getMinutes()/60};}}function isOpen(){var n=nowNY();return (H[n.d]||[]).some(function(s){return n.t>=s[0]&&n.t<s[1];});}function render(){var op=isOpen();var c=op?"#10b981":"#9ca3af";document.querySelectorAll(".js-open-status").forEach(function(el){var d=el.querySelector(".js-open-dot"),t=el.querySelector(".js-open-text");if(t){t.textContent=op?"Open Now":"Closed";t.style.color=c;}if(d)d.style.background=c;el.style.background=op?"rgba(16,185,129,0.12)":"rgba(148,163,184,0.14)";});}render();setInterval(render,60000);})();</script></body>
+</html>
