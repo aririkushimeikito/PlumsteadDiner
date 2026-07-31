@@ -99,6 +99,19 @@
     if ("ResizeObserver" in window) new ResizeObserver(set).observe(header);
   }
 
+
+  function initHeroCarousel() {
+    var slides = document.querySelectorAll(".hero-slide");
+    if (slides.length < 2) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var idx = 0;
+    setInterval(function () {
+      slides[idx].classList.remove("is-active");
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add("is-active");
+    }, 5000);
+  }
+
   function initHeaderScroll() {
     var header = document.querySelector(".site-header");
     if (!header) return;
@@ -168,6 +181,7 @@
     initYear();
     initHeaderVar();
     initHeaderScroll();
+    initHeroCarousel();
     initMenuSpy();
   }
 

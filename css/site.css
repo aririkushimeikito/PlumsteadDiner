@@ -16,7 +16,7 @@
   --ink: #33302c;
   --muted: #6f675c;
   --line: #f0e3d2;
-  --gold: #e9c496;
+  --gold: #eef1f4;
   --shadow: 0 14px 34px rgba(29, 42, 77, 0.09);
   --radius: 16px;
   --font-script: "Dancing Script", cursive;
@@ -733,25 +733,34 @@ body {
 .menu-note strong { color: var(--gold); }
 
 /* footer: logo sits bare on the near-black footer (light logo already legible) */
-.footer-brand .logo-link { display: inline-flex; padding: 0; background: none; box-shadow: none; }
-.footer-brand .logo-link img { height: 88px; width: auto; }
+.footer-brand .logo-link {
+  display: inline-flex; background: #fff; border-radius: 14px; padding: 12px 18px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.45);
+}
+.footer-brand .logo-link img { height: 74px; width: auto; }
 
 /* map keeps a subtle light frame */
 .map-frame, .contact-card .map-frame { border: 1px solid var(--line); }
 
 /* ---------- transparent header over hero, solid on scroll ---------- */
-.site-header { background: transparent; border-bottom-color: transparent; box-shadow: none; backdrop-filter: none; transition: background .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.site-header {
+  background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(29, 42, 77, 0.10); box-shadow: 0 2px 14px rgba(0,0,0,.14);
+  transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
 .site-header.scrolled {
-  background: rgba(15, 13, 9, 0.92); backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line); box-shadow: 0 4px 20px rgba(0,0,0,.45);
+  background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,.16);
+  border-bottom: 1px solid rgba(29, 42, 77, 0.10);
 }
-/* soft gradient scrim keeps the logo/nav legible over the hero while transparent */
-.site-header::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, rgba(11,10,7,0.6), rgba(11,10,7,0));
-  opacity: 1; transition: opacity .25s ease;
+/* nav is dark navy on the white header */
+.site-header .main-nav a { color: var(--navy); }
+.site-header .main-nav a:hover { background: rgba(207,42,58,.09); color: var(--red); }
+.site-header .main-nav a.active { color: var(--red); }
+.site-header .nav-toggle { background: #fff; border-color: var(--navy); color: var(--navy); }
+@media (max-width: 960px) {
+  .site-header .main-nav { background: #ffffff; border-bottom: 2px solid var(--red); }
+  .site-header .main-nav a { border-bottom: 1px solid rgba(29,42,77,.1); }
 }
-.site-header.scrolled::before { opacity: 0; }
 
 /* pull the first hero up beneath the transparent header so it truly overlays */
 main > .hero:first-child,
@@ -795,10 +804,13 @@ main > .page-hero:first-child { padding-top: calc(var(--hdr, 95px) + 42px); }
 
 /* ---------- white logo, bare, on the dark header + footer ---------- */
 .site-header .logo-link { background: none; box-shadow: none; padding: 2px 0; }
-.site-header .logo-link img { height: 82px; }
-@media (max-width: 960px) { .site-header .logo-link img { height: 60px; } }
-.footer-brand .logo-link { display: inline-flex; background: none; box-shadow: none; padding: 0; }
-.footer-brand .logo-link img { height: 92px; width: auto; }
+.site-header .logo-link img { height: 74px; }
+@media (max-width: 960px) { .site-header .logo-link img { height: 54px; } }
+.footer-brand .logo-link {
+  display: inline-flex; background: #fff; border-radius: 14px; padding: 12px 18px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.45);
+}
+.footer-brand .logo-link img { height: 72px; width: auto; }
 
 /* ---------- reviews placeholder (home) ---------- */
 .reviews-placeholder {
@@ -814,3 +826,17 @@ main > .page-hero:first-child { padding-top: calc(var(--hdr, 95px) + 42px); }
 }
 .reviews-placeholder .rp-note { font-size: 14px; font-style: italic; opacity: .8; }
 .reviews-placeholder .btn { margin-top: 22px; }
+
+/* ---------- home hero image carousel (rotating backgrounds) ---------- */
+.hero-carousel { position: relative; }
+.hero-slides { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-slide {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 1.4s ease-in-out; will-change: opacity;
+}
+.hero-slide.is-active { opacity: 1; }
+.hero-carousel::before { z-index: 1; }   /* keep the dark overlay above the slides */
+.hero-carousel .container { position: relative; z-index: 2; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { transition: none; }
+}
