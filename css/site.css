@@ -759,11 +759,6 @@ body {
 }
 .site-header.scrolled::before { opacity: 0; }
 
-/* logo swap: white over the hero, colored on the white header */
-.site-header .logo-link .logo-color { display: none; }
-.site-header.scrolled .logo-link .logo-white { display: none; }
-.site-header.scrolled .logo-link .logo-color { display: block; }
-
 /* nav: light over the hero, navy on the white header (skip the red CTA) */
 .site-header .main-nav a:not(.nav-cta) { color: #ffffff; }
 .site-header .main-nav a:not(.nav-cta):hover { background: rgba(255,255,255,.16); color: #fff; }
