@@ -278,8 +278,8 @@ a:hover { color: var(--red-dark); }
   content: "\2605"; position: absolute; top: 12px; right: 16px;
   color: var(--red); font-size: 13px; opacity: .85;
 }
-.card .card-art { background: #faf1e2; padding: 18px; text-align: center; }
-.card .card-art img { height: 140px; width: auto; }
+.card .card-art { background: #faf1e2; padding: 0; }
+.card .card-art img { width: 100%; height: 200px; object-fit: cover; display: block; }
 .card .card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
 .card h3 {
   font-family: var(--font-head); font-weight: 600; text-transform: uppercase;
@@ -544,3 +544,80 @@ a:hover { color: var(--red-dark); }
 .page-hero .kicker::before { content: "— "; }
 .page-hero p.sub { max-width: 70ch; margin: 8px auto 0; color: var(--muted); }
 .page-hero p.sub a { color: var(--red); }
+
+
+/* ---------- full-bleed photo heroes (Scratch Kitchen-style layout) ---------- */
+
+.photo-hero {
+  position: relative; background-size: cover; background-position: center;
+  padding: 104px 0 96px;
+}
+.photo-hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(22, 33, 63, 0.78) 0%, rgba(22, 33, 63, 0.5) 55%, rgba(22, 33, 63, 0.82) 100%);
+}
+.photo-hero .container { position: relative; z-index: 1; }
+.photo-hero h1 { color: #fff; }
+.photo-hero .kicker, .photo-hero .kicker-label { color: var(--gold); }
+.photo-hero p.sub, .photo-hero p.lead { color: #ece6d8; }
+.photo-hero p.sub a { color: var(--gold); }
+.photo-hero .hero-chip { background: rgba(253, 246, 238, 0.14); border-color: rgba(253,246,238,.3); color: #fff; }
+.photo-hero .script-line { color: var(--gold); border-bottom-color: var(--gold); }
+.photo-hero .hero-meta { color: #ece6d8; }
+.photo-hero .btn-outline-navy { border-color: rgba(244,239,228,.65); color: #f4efe4; background: transparent; }
+.photo-hero .btn-outline-navy:hover { background: rgba(244,239,228,.14); color: #fff; }
+
+.hero.photo-hero .container { display: block; max-width: 860px; padding-top: 0; padding-bottom: 0; }
+.hero.photo-hero { padding: 120px 0 110px; }
+
+/* ---------- menu sections with side photos ---------- */
+
+.menu-flex { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 34px; align-items: start; }
+.menu-flex .menu-panel { margin-bottom: 0; }
+.menu-flex .menu-cols { columns: 1; }
+.menu-photo { margin: 0; position: sticky; top: 130px; }
+.menu-photo img {
+  width: 100%; aspect-ratio: 4 / 3.1; object-fit: cover; display: block;
+  border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--line);
+}
+.menu-photo figcaption {
+  text-align: center; font-family: var(--font-head); font-weight: 600; font-size: 12px;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: 10px;
+}
+.menu-flex.flip .menu-photo { order: -1; }
+@media (max-width: 900px) {
+  .menu-flex { grid-template-columns: 1fr; }
+  .menu-flex.flip .menu-photo { order: 2; }
+  .menu-photo { position: static; }
+}
+
+/* ---------- photo strip (gallery band) ---------- */
+
+.photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.photo-strip img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--line);
+}
+@media (max-width: 720px) { .photo-strip { grid-template-columns: 1fr; } }
+
+/* ---------- pre-footer CTA band ---------- */
+
+.cta-band {
+  background: linear-gradient(120deg, #efce9d 0%, #e2b476 100%);
+  text-align: center; padding: 62px 0 66px; margin-top: 70px;
+  border-top: 4px solid var(--navy);
+}
+.cta-band + .site-footer { margin-top: 0; }
+.cta-band .script {
+  font-family: var(--font-script); font-weight: 700; color: var(--red);
+  font-size: 30px; margin: 0 0 4px; display: block;
+}
+.cta-band h2 {
+  font-family: var(--font-head); font-weight: 700; text-transform: uppercase;
+  color: var(--navy); font-size: clamp(30px, 4vw, 46px); margin: 0 0 10px; letter-spacing: .02em;
+}
+.cta-band p { color: #5a4a33; margin: 0 0 24px; font-weight: 600; }
+.cta-band .btn-row { justify-content: center; }
+
+/* tighter section headings inside photo'd menu panels */
+.menu-flex .menu-panel > h2 { font-size: clamp(21px, 2.2vw, 27px); }
