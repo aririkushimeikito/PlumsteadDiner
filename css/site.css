@@ -742,24 +742,42 @@ body {
 /* map keeps a subtle light frame */
 .map-frame, .contact-card .map-frame { border: 1px solid var(--line); }
 
-/* ---------- transparent header over hero, solid on scroll ---------- */
+/* ---------- transparent header over hero, white on scroll ---------- */
 .site-header {
-  background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(29, 42, 77, 0.10); box-shadow: 0 2px 14px rgba(0,0,0,.14);
+  background: transparent; border-bottom: 1px solid transparent; box-shadow: none; backdrop-filter: none;
   transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .site-header.scrolled {
-  background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,.16);
-  border-bottom: 1px solid rgba(29, 42, 77, 0.10);
+  background: #ffffff; backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(29, 42, 77, 0.10); box-shadow: 0 4px 20px rgba(0,0,0,.16);
 }
-/* nav is dark navy on the white header */
-.site-header .main-nav a { color: var(--navy); }
-.site-header .main-nav a:hover { background: rgba(207,42,58,.09); color: var(--red); }
-.site-header .main-nav a.active { color: var(--red); }
-.site-header .nav-toggle { background: #fff; border-color: var(--navy); color: var(--navy); }
+/* legibility scrim over the hero while transparent */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(11,10,7,0.55), rgba(11,10,7,0));
+  opacity: 1; transition: opacity .25s ease;
+}
+.site-header.scrolled::before { opacity: 0; }
+
+/* logo swap: white over the hero, colored on the white header */
+.site-header .logo-link .logo-color { display: none; }
+.site-header.scrolled .logo-link .logo-white { display: none; }
+.site-header.scrolled .logo-link .logo-color { display: block; }
+
+/* nav: light over the hero, navy on the white header (skip the red CTA) */
+.site-header .main-nav a:not(.nav-cta) { color: #ffffff; }
+.site-header .main-nav a:not(.nav-cta):hover { background: rgba(255,255,255,.16); color: #fff; }
+.site-header .main-nav a.active:not(.nav-cta) { color: #fff; }
+.site-header.scrolled .main-nav a:not(.nav-cta) { color: var(--navy); }
+.site-header.scrolled .main-nav a:not(.nav-cta):hover { background: rgba(207,42,58,.09); color: var(--red); }
+.site-header.scrolled .main-nav a.active:not(.nav-cta) { color: var(--red); }
+.site-header .nav-toggle { background: transparent; border-color: #fff; color: #fff; }
+.site-header.scrolled .nav-toggle { background: #fff; border-color: var(--navy); color: var(--navy); }
 @media (max-width: 960px) {
   .site-header .main-nav { background: #ffffff; border-bottom: 2px solid var(--red); }
-  .site-header .main-nav a { border-bottom: 1px solid rgba(29,42,77,.1); }
+  .site-header .main-nav a:not(.nav-cta),
+  .site-header.scrolled .main-nav a:not(.nav-cta) { color: var(--navy); border-bottom: 1px solid rgba(29,42,77,.1); }
+  .site-header .main-nav a.active:not(.nav-cta) { color: var(--red); box-shadow: none; }
 }
 
 /* pull the first hero up beneath the transparent header so it truly overlays */
@@ -804,8 +822,8 @@ main > .page-hero:first-child { padding-top: calc(var(--hdr, 95px) + 42px); }
 
 /* ---------- white logo, bare, on the dark header + footer ---------- */
 .site-header .logo-link { background: none; box-shadow: none; padding: 2px 0; }
-.site-header .logo-link img { height: 74px; }
-@media (max-width: 960px) { .site-header .logo-link img { height: 54px; } }
+.site-header .logo-link img { height: 90px; width: auto; display: block; }
+@media (max-width: 960px) { .site-header .logo-link img { height: 66px; } }
 .footer-brand .logo-link {
   display: inline-flex; background: #fff; border-radius: 14px; padding: 12px 18px;
   box-shadow: 0 10px 26px rgba(0,0,0,.45);
