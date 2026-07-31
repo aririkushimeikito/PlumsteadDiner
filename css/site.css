@@ -777,15 +777,9 @@ main > .page-hero:first-child { padding-top: calc(var(--hdr, 95px) + 42px); }
 @media (max-width: 900px) { .visit-map, .visit-map .map-frame { min-height: 380px; } }
 
 
-/* ---------- original (colored) logo on a light chip so it reads on dark ---------- */
-.site-header .logo-link {
-  background: var(--cream); border-radius: 12px; padding: 6px 12px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
-}
-.site-header .logo-link img { height: 66px; }
-@media (max-width: 960px) { .site-header .logo-link img { height: 52px; } }
-.footer-brand .logo-link {
-  display: inline-flex; background: var(--cream); border-radius: 12px; padding: 10px 16px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
-}
-.footer-brand .logo-link img { height: 74px; width: auto; }
+/* ---------- white logo, bare, on the dark header + footer ---------- */
+.site-header .logo-link { background: none; box-shadow: none; padding: 2px 0; }
+.site-header .logo-link img { height: 82px; }
+@media (max-width: 960px) { .site-header .logo-link img { height: 60px; } }
+.footer-brand .logo-link { display: inline-flex; background: none; box-shadow: none; padding: 0; }
+.footer-brand .logo-link img { height: 92px; width: auto; }
