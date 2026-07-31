@@ -799,3 +799,18 @@ main > .page-hero:first-child { padding-top: calc(var(--hdr, 95px) + 42px); }
 @media (max-width: 960px) { .site-header .logo-link img { height: 60px; } }
 .footer-brand .logo-link { display: inline-flex; background: none; box-shadow: none; padding: 0; }
 .footer-brand .logo-link img { height: 92px; width: auto; }
+
+/* ---------- reviews placeholder (home) ---------- */
+.reviews-placeholder {
+  max-width: 900px; margin: 0 auto;
+  background: var(--paper); border: 2px dashed rgba(233, 196, 150, 0.4);
+  border-radius: var(--radius); padding: 54px 30px; text-align: center;
+}
+.reviews-placeholder .stars { color: var(--gold); font-size: 26px; letter-spacing: 4px; margin-bottom: 14px; }
+.reviews-placeholder p { color: var(--muted); margin: 0 auto 8px; max-width: 52ch; }
+.reviews-placeholder .rp-title {
+  font-family: var(--font-head); font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--ink); font-size: 20px; margin-bottom: 6px;
+}
+.reviews-placeholder .rp-note { font-size: 14px; font-style: italic; opacity: .8; }
+.reviews-placeholder .btn { margin-top: 22px; }
