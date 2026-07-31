@@ -242,7 +242,7 @@ a:hover { color: var(--red-dark); }
 .btn {
   display: inline-flex; align-items: center; gap: 9px; text-decoration: none; cursor: pointer;
   font-family: var(--font-head); font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-  font-size: 13.5px; padding: 13px 26px; border-radius: 999px; border: 2px solid transparent;
+  font-size: 13.5px; padding: 13px 26px; border-radius: 999px; border: 1px solid transparent;
 }
 .btn-red { background: var(--red); color: #fff; box-shadow: 0 10px 22px rgba(207, 42, 58, 0.28); }
 .btn-red:hover { background: var(--red-dark); color: #fff; }
