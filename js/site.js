@@ -99,6 +99,16 @@
     if ("ResizeObserver" in window) new ResizeObserver(set).observe(header);
   }
 
+  function initHeaderScroll() {
+    var header = document.querySelector(".site-header");
+    if (!header) return;
+    function apply() {
+      header.classList.toggle("scrolled", window.pageYOffset > 24);
+    }
+    apply();
+    window.addEventListener("scroll", apply, { passive: true });
+  }
+
   function initMenuSpy() {
     var bar = document.querySelector(".menu-nav");
     if (!bar) return;
@@ -157,6 +167,7 @@
     initReveal();
     initYear();
     initHeaderVar();
+    initHeaderScroll();
     initMenuSpy();
   }
 

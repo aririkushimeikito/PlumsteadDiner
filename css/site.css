@@ -721,3 +721,56 @@ body {
 
 /* map keeps a subtle light frame */
 .map-frame, .contact-card .map-frame { border: 1px solid var(--line); }
+
+/* ---------- transparent header over hero, solid on scroll ---------- */
+.site-header { background: transparent; border-bottom-color: transparent; box-shadow: none; backdrop-filter: none; transition: background .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.site-header.scrolled {
+  background: rgba(15, 13, 9, 0.92); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line); box-shadow: 0 4px 20px rgba(0,0,0,.45);
+}
+/* soft gradient scrim keeps the logo/nav legible over the hero while transparent */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(11,10,7,0.6), rgba(11,10,7,0));
+  opacity: 1; transition: opacity .25s ease;
+}
+.site-header.scrolled::before { opacity: 0; }
+
+/* pull the first hero up beneath the transparent header so it truly overlays */
+main > .hero:first-child,
+main > .page-hero:first-child { margin-top: calc(-1 * var(--hdr, 95px)); }
+main > .hero.photo-hero:first-child { padding-top: calc(var(--hdr, 95px) + 60px); }
+main > .page-hero:first-child { padding-top: calc(var(--hdr, 95px) + 42px); }
+
+/* ---------- Visit Us: Scratch-style info panel + tall map ---------- */
+.visit-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: stretch; }
+@media (max-width: 900px) { .visit-layout { grid-template-columns: 1fr; } }
+
+.visit-info {
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 34px 36px;
+}
+@media (max-width: 620px) { .visit-info { padding: 26px 22px; } }
+
+.info-row { display: flex; gap: 18px; align-items: flex-start; }
+.info-ico {
+  flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%;
+  border: 1.5px solid var(--gold); color: var(--gold);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.info-ico svg { width: 22px; height: 22px; }
+.info-row h3 {
+  font-family: var(--font-head); font-weight: 600; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--ink); margin: 8px 0 8px; font-size: 20px;
+}
+.info-big { font-size: 18px; font-weight: 600; line-height: 1.5; margin: 0 0 8px; color: var(--ink); }
+.info-big a { color: var(--ink); text-decoration: none; }
+.info-big a:hover { color: var(--gold); }
+.info-fine { color: var(--muted); font-size: 14px; font-style: italic; margin: 12px 0 0; }
+.gold-link { color: var(--gold); font-weight: 700; text-decoration: none; }
+.gold-link:hover { color: var(--red); }
+.info-div { border: none; border-top: 1px solid var(--line); margin: 24px 0; }
+
+.visit-map { min-height: 520px; }
+.visit-map .map-frame { height: 100%; min-height: 520px; }
+@media (max-width: 900px) { .visit-map, .visit-map .map-frame { min-height: 380px; } }
