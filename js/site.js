@@ -149,7 +149,7 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function boot() {
     updateOpenStatus();
     setInterval(updateOpenStatus, 60 * 1000);
     initNavToggle();
@@ -158,5 +158,11 @@
     initYear();
     initHeaderVar();
     initMenuSpy();
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
 })();

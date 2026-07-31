@@ -649,3 +649,75 @@ a:hover { color: var(--red-dark); }
 
 /* tighter section headings inside photo'd menu panels */
 .menu-flex .menu-panel > h2 { font-size: clamp(21px, 2.2vw, 27px); }
+
+
+/* ==========================================================================
+   DARK THEME — sitewide (charcoal/near-black surfaces, cream text,
+   red + gold accents). Overrides the light defaults above.
+   ========================================================================== */
+
+:root {
+  --paper: #1b1811;
+  --ink: #ece6d8;
+  --muted: #a89f8d;
+  --line: rgba(236, 230, 216, 0.12);
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  color: var(--ink);
+  background: linear-gradient(165deg, #14120c 0%, #100e09 55%, #0b0a07 100%) fixed, #0f0d09;
+}
+
+/* header + nav */
+.site-header {
+  background: rgba(15, 13, 9, 0.92);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+.main-nav a { color: var(--ink); }
+.main-nav a:hover { background: rgba(233, 196, 150, 0.12); color: var(--gold); }
+.main-nav a.active { color: var(--gold); }
+.nav-toggle { background: transparent; color: var(--ink); border-color: rgba(236,230,216,.5); }
+@media (max-width: 960px) {
+  .main-nav { background: #14120d; border-bottom: 2px solid var(--gold); }
+  .main-nav a { border-bottom: 1px solid var(--line); }
+  .main-nav a.active { border-left: 4px solid var(--gold); }
+}
+
+/* headings & body text that were navy/ink on light */
+.section-title, .menu-panel > h2, .menu-panel > h3,
+.card h3, .feature-card h3, .vcard h3, .contact-card h2,
+.faq summary, .prose h2, .prose, .menu-item .name { color: var(--ink); }
+.section-sub, .card p, .feature-card p, .menu-item .desc,
+.menu-photo figcaption, .menu-note, .hero p.lead, .hero-meta { color: var(--muted); }
+.hero h1 { color: var(--ink); }
+
+/* surfaces / cards */
+.card, .feature-card, .menu-panel, .vcard, .contact-card, .faq details {
+  background: var(--paper); border-color: var(--line);
+}
+.card .card-art { background: #241f17; }
+.menu-photo img, .photo-strip img { border-color: var(--line); }
+.menu-item .dots { border-bottom-color: rgba(236, 230, 216, 0.22); }
+.pullquote { background: var(--paper); color: var(--ink); }
+.section.tint { background: rgba(255, 255, 255, 0.03); }
+.hero-chip { background: rgba(236, 230, 216, 0.08); border-color: var(--line); color: var(--ink); }
+.faq .faq-a, .faq .faq-a p { color: var(--muted); }
+
+/* icon tiles + outline buttons need light-on-dark treatment */
+.icon-tile { background: var(--red); }
+.btn-outline-navy { border-color: var(--gold); color: var(--gold); background: transparent; }
+.btn-outline-navy:hover { background: var(--gold); color: #17140d; }
+.btn-navy { background: #26324f; }
+
+/* accents */
+.kicker-label, .page-hero .kicker { color: var(--gold); }
+.menu-note strong { color: var(--gold); }
+
+/* footer: logo sits bare on the near-black footer (light logo already legible) */
+.footer-brand .logo-link { display: inline-flex; padding: 0; background: none; box-shadow: none; }
+.footer-brand .logo-link img { height: 88px; width: auto; }
+
+/* map keeps a subtle light frame */
+.map-frame, .contact-card .map-frame { border: 1px solid var(--line); }
