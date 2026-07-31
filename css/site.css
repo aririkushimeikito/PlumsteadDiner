@@ -632,21 +632,37 @@ a:hover { color: var(--red-dark); }
 /* ---------- pre-footer CTA band ---------- */
 
 .cta-band {
-  background: linear-gradient(120deg, #efce9d 0%, #e2b476 100%);
-  text-align: center; padding: 62px 0 66px; margin-top: 70px;
-  border-top: 4px solid var(--navy);
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #8b1f27 0%, #a3242f 52%, #7e1c24 100%);
+  text-align: center; padding: 66px 0 70px; margin-top: 70px;
+  border-top: 1px solid rgba(233, 196, 150, 0.4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
 }
+/* subtle star texture so the red band isn't flat */
+.cta-band::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background:
+    radial-gradient(circle at 18% 30%, rgba(255,255,255,.06) 0 2px, transparent 3px),
+    radial-gradient(circle at 82% 68%, rgba(255,255,255,.05) 0 2px, transparent 3px),
+    radial-gradient(120% 80% at 50% -10%, rgba(0,0,0,.28), transparent 60%);
+}
+.cta-band .container { position: relative; z-index: 1; }
 .cta-band + .site-footer { margin-top: 0; }
 .cta-band .script {
-  font-family: var(--font-script); font-weight: 700; color: var(--red);
+  font-family: var(--font-script); font-weight: 700; color: #f4d9a6;
   font-size: 30px; margin: 0 0 4px; display: block;
 }
 .cta-band h2 {
   font-family: var(--font-head); font-weight: 700; text-transform: uppercase;
-  color: var(--navy); font-size: clamp(30px, 4vw, 46px); margin: 0 0 10px; letter-spacing: .02em;
+  color: #fff; font-size: clamp(30px, 4vw, 46px); margin: 0 0 10px; letter-spacing: .02em;
 }
-.cta-band p { color: #5a4a33; margin: 0 0 24px; font-weight: 600; }
+.cta-band p { color: rgba(255, 244, 236, 0.9); margin: 0 0 24px; font-weight: 600; }
 .cta-band .btn-row { justify-content: center; }
+/* buttons re-tuned for contrast on the red band */
+.cta-band .btn-navy { background: #16213f; color: #fff; box-shadow: 0 10px 22px rgba(0,0,0,.3); }
+.cta-band .btn-navy:hover { background: #0f1830; }
+.cta-band .btn-red { background: #fff; color: #a3242f; box-shadow: 0 10px 22px rgba(0,0,0,.28); }
+.cta-band .btn-red:hover { background: #f4d9a6; color: #7e1c24; }
 
 /* tighter section headings inside photo'd menu panels */
 .menu-flex .menu-panel > h2 { font-size: clamp(21px, 2.2vw, 27px); }
