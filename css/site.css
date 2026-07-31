@@ -819,9 +819,10 @@ main > .page-hero:first-child { padding-top: calc(var(--hdr, 95px) + 42px); }
 .site-header .logo-link { background: none; box-shadow: none; padding: 2px 0; }
 .site-header .logo-link img { height: 90px; width: auto; display: block; }
 @media (max-width: 960px) { .site-header .logo-link img { height: 66px; } }
+/* footer logo: blue colored logo bare on the black footer, no white chip (matches header) */
 .footer-brand .logo-link {
-  display: inline-flex; background: #fff; border-radius: 14px; padding: 12px 18px;
-  box-shadow: 0 10px 26px rgba(0,0,0,.45);
+  display: inline-flex; background: transparent; border-radius: 0; padding: 0;
+  box-shadow: none;
 }
 .footer-brand .logo-link img { height: 72px; width: auto; }
 
