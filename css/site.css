@@ -137,7 +137,7 @@ a:hover { color: var(--red-dark); }
 
 .ticker {
   background: var(--navy-deep); overflow: hidden; position: relative;
-  border-top: 3px solid var(--red); border-bottom: 3px solid var(--red);
+  border-top: 1px solid var(--red); border-bottom: 1px solid var(--red);
 }
 .ticker-track {
   display: inline-flex; align-items: center; white-space: nowrap;
@@ -318,9 +318,10 @@ a:hover { color: var(--red-dark); }
 /* sticky section-jump bar (Scratch Kitchen-style) */
 .menu-nav {
   position: sticky; top: var(--hdr, 95px); z-index: 55;
-  background: var(--navy-deep);
-  border-top: 3px solid var(--red); border-bottom: 3px solid var(--red);
-  box-shadow: 0 10px 22px rgba(22, 33, 63, 0.18);
+  background: #100e09;
+  border-top: 1px solid rgba(233, 196, 150, 0.32);
+  border-bottom: 1px solid rgba(233, 196, 150, 0.32);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
 }
 @media (max-width: 960px) { .menu-nav { top: var(--hdr, 75px); } }
 .menu-nav .container { max-width: 1280px; padding-top: 11px; padding-bottom: 11px; }
@@ -774,3 +775,17 @@ main > .page-hero:first-child { padding-top: calc(var(--hdr, 95px) + 42px); }
 .visit-map { min-height: 520px; }
 .visit-map .map-frame { height: 100%; min-height: 520px; }
 @media (max-width: 900px) { .visit-map, .visit-map .map-frame { min-height: 380px; } }
+
+
+/* ---------- original (colored) logo on a light chip so it reads on dark ---------- */
+.site-header .logo-link {
+  background: var(--cream); border-radius: 12px; padding: 6px 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}
+.site-header .logo-link img { height: 66px; }
+@media (max-width: 960px) { .site-header .logo-link img { height: 52px; } }
+.footer-brand .logo-link {
+  display: inline-flex; background: var(--cream); border-radius: 12px; padding: 10px 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+.footer-brand .logo-link img { height: 74px; width: auto; }

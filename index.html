@@ -133,7 +133,7 @@
   <header class="site-header">
     <div class="container">
       <a class="logo-link" href="index.html" aria-label="Plumstead Diner — back to top of home page">
-        <img src="img/plumstead-logo-light.png" alt="Plumstead Diner — Pipersville, PA USA" width="772" height="438">
+        <img src="img/plumstead-logo.png" alt="Plumstead Diner — Pipersville, PA USA" width="772" height="438">
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -301,23 +301,53 @@
           <h2 class="section-title">Visit <span class="script">us</span></h2>
           <p class="section-sub">Right on Easton Road in the heart of Pipersville, Bucks County.</p>
         </div>
-        <div class="vcard-grid reveal">
-          <div class="vcard">
-            <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <h3>Address</h3>
-            <address class="big">Plumstead Diner<br>5978 Easton Rd<br>Pipersville, PA 18947</address>
-            <a class="btn btn-navy" href="https://maps.app.goo.gl/w6nrwWkYdXTLqVPR8" target="_blank" rel="noopener">Get Directions &rarr;</a>
+        <div class="visit-layout">
+          <div class="visit-info reveal">
+            <div class="info-row">
+              <span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div>
+                <h3>Where</h3>
+                <p class="info-big">5978 Easton Road<br>Pipersville, PA 18947</p>
+                <a class="gold-link" href="https://maps.app.goo.gl/w6nrwWkYdXTLqVPR8" target="_blank" rel="noopener">Get directions &rarr;</a>
+              </div>
+            </div>
+            <hr class="info-div">
+            <div class="info-row">
+              <span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <div style="width:100%;">
+                <h3>Hours</h3>
+                <span class="status-chip js-status"><span class="dot"></span><span class="js-status-text">Open Daily 7 AM – 3 PM</span></span>
+                <table class="hours-table" style="margin-top:14px;">
+                  <tr data-day="1"><td>Monday</td><td>7:00 AM – 3:00 PM</td></tr>
+                  <tr data-day="2"><td>Tuesday</td><td>7:00 AM – 3:00 PM</td></tr>
+                  <tr data-day="3"><td>Wednesday</td><td>7:00 AM – 3:00 PM</td></tr>
+                  <tr data-day="4"><td>Thursday</td><td>7:00 AM – 3:00 PM</td></tr>
+                  <tr data-day="5"><td>Friday</td><td>7:00 AM – 3:00 PM</td></tr>
+                  <tr data-day="6"><td>Saturday</td><td>7:00 AM – 3:00 PM</td></tr>
+                  <tr data-day="0"><td>Sunday</td><td>7:00 AM – 3:00 PM</td></tr>
+                </table>
+                <p class="info-fine">Breakfast served all day. Hours may vary on holidays — follow us for the latest.</p>
+              </div>
+            </div>
+            <hr class="info-div">
+            <div class="info-row">
+              <span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 2z"/></svg></span>
+              <div>
+                <h3>Contact Us</h3>
+                <p class="info-big"><a href="tel:+12676435694">(267) 643-5694</a></p>
+              </div>
+            </div>
+            <div class="btn-row" style="margin-top:26px;">
+              <a class="btn btn-red" href="tel:+12676435694">&#9742; Call Us</a>
+              <a class="btn btn-outline-navy" href="https://maps.app.goo.gl/w6nrwWkYdXTLqVPR8" target="_blank" rel="noopener">Get Directions</a>
+            </div>
           </div>
-          <div class="vcard">
-            <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 2z"/></svg></span>
-            <h3>Phone</h3>
-            <p class="big"><a href="tel:+12676435694">267-643-5694</a></p>
-            <a class="btn btn-red" href="tel:+12676435694">Call Us &rarr;</a>
+          <div class="visit-map reveal">
+            <iframe class="map-frame" title="Map to Plumstead Diner, 5978 Easton Road, Pipersville, PA 18947"
+              src="https://www.google.com/maps?q=Plumstead%20Diner%2C%205978%20Easton%20Road%2C%20Pipersville%2C%20PA%2018947&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           </div>
         </div>
-        <iframe class="map-frame reveal" title="Map to Plumstead Diner, 5978 Easton Road, Pipersville, PA 18947"
-          src="https://www.google.com/maps?q=Plumstead%20Diner%2C%205978%20Easton%20Road%2C%20Pipersville%2C%20PA%2018947&output=embed"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
     </section>
 
@@ -373,7 +403,7 @@
     <div class="footer-main">
       <div class="container">
         <div class="footer-brand">
-          <a class="logo-link" href="index.html" aria-label="Plumstead Diner home"><img src="img/plumstead-logo-light.png" alt="Plumstead Diner — Pipersville, PA USA" style="height:84px;width:auto;"></a>
+          <a class="logo-link" href="index.html" aria-label="Plumstead Diner home"><img src="img/plumstead-logo.png" alt="Plumstead Diner — Pipersville, PA USA" style="height:84px;width:auto;"></a>
           <p class="footer-tag">To us, you&rsquo;re one of the family.</p>
           <p class="footer-phone"><a href="tel:+12676435694">&#9742; 267-643-5694</a></p>
           <div class="social-links">
