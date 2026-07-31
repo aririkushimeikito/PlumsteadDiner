@@ -102,7 +102,7 @@ a:hover { color: var(--red-dark); }
   font-family: var(--font-head);
   font-weight: 500; font-size: 14.5px; letter-spacing: .09em; text-transform: uppercase;
   color: var(--navy); text-decoration: none;
-  padding: 9px 13px; border-radius: 999px;
+  padding: 9px 13px; border-radius: 8px;
 }
 .main-nav a:hover { background: rgba(207, 42, 58, 0.09); color: var(--red); }
 .main-nav a.active { color: var(--red); }
@@ -130,7 +130,7 @@ a:hover { color: var(--red-dark); }
   .main-nav.open { display: flex; }
   .main-nav a { padding: 12px 10px; border-bottom: 1px solid var(--line); border-radius: 0; }
   .main-nav a.active { border-left: 4px solid var(--red); }
-  .main-nav .nav-cta { margin: 12px 0 0; text-align: center; border-bottom: none; border-radius: 999px; }
+  .main-nav .nav-cta { margin: 12px 0 0; text-align: center; border-bottom: none; border-radius: 8px; }
 }
 
 /* ---------- ticker (marquee) ---------- */
@@ -242,7 +242,7 @@ a:hover { color: var(--red-dark); }
 .btn {
   display: inline-flex; align-items: center; gap: 9px; text-decoration: none; cursor: pointer;
   font-family: var(--font-head); font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-  font-size: 13.5px; padding: 13px 26px; border-radius: 999px; border: 2px solid transparent;
+  font-size: 13.5px; padding: 13px 26px; border-radius: 8px; border: 2px solid transparent;
 }
 .btn-red { background: var(--red); color: #fff; box-shadow: 0 10px 22px rgba(207, 42, 58, 0.28); }
 .btn-red:hover { background: var(--red-dark); color: #fff; }
